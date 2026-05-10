@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoonya | शून्य | Zero, Redefined.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,900;1,700&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1510;
+    --cream: #f5f0e8;
+    --warm: #e8dcc8;
+    --bark: #7c5c3a;
+    --moss: #4a5c3a;
+    --rust: #c4622d;
+    --sand: #d4c4a0;
+    --fog: #b8b0a4;
+    --border: 3px solid var(--ink);
+    --border-thick: 5px solid var(--ink);
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–cream);
+color: var(–ink);
+font-family: ‘DM Mono’, monospace;
+overflow-x: hidden;
+cursor: crosshair;
+}
+
+/* NOISE TEXTURE OVERLAY */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+opacity: 0.4;
+}
+
+/* ── HERO ──────────────────────────────── */
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-rows: auto 1fr auto;
+border-bottom: var(–border-thick);
+position: relative;
+background: var(–ink);
+overflow: hidden;
+}
+
+/* organic blob bg */
+.hero::before {
+content: ‘’;
+position: absolute;
+width: 700px; height: 700px;
+background: radial-gradient(ellipse, rgba(124,92,58,0.35) 0%, transparent 70%);
+top: -150px; right: -150px;
+border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+animation: blob 12s ease-in-out infinite alternate;
+}
+.hero::after {
+content: ‘’;
+position: absolute;
+width: 500px; height: 500px;
+background: radial-gradient(ellipse, rgba(74,92,58,0.25) 0%, transparent 70%);
+bottom: -100px; left: 100px;
+border-radius: 40% 60% 30% 70% / 60% 40% 70% 50%;
+animation: blob 16s ease-in-out infinite alternate-reverse;
+}
+@keyframes blob {
+0%   { border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%; }
+50%  { border-radius: 40% 60% 30% 70% / 60% 40% 70% 50%; }
+100% { border-radius: 70% 30% 60% 40% / 40% 70% 50% 60%; }
+}
+
+.nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 28px 48px;
+border-bottom: var(–border);
+border-color: rgba(245,240,232,0.15);
+position: relative;
+z-index: 10;
+}
+
+.logo-text {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.6rem;
+color: var(–cream);
+letter-spacing: -0.02em;
+line-height: 1;
+}
+.logo-devanagari {
+font-size: 0.9rem;
+color: var(–sand);
+display: block;
+font-family: ‘DM Mono’, monospace;
+font-weight: 300;
+letter-spacing: 0.1em;
+margin-top: 2px;
+}
+
+.nav-links {
+display: flex; gap: 32px; list-style: none;
+}
+.nav-links a {
+color: var(–sand);
+text-decoration: none;
+font-size: 0.72rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+transition: color 0.2s;
+font-weight: 500;
+}
+.nav-links a:hover { color: var(–cream); }
+
+.hero-body {
+display: flex;
+align-items: center;
+padding: 0 48px;
+position: relative;
+z-index: 10;
+}
+
+.hero-content { max-width: 720px; }
+
+.hero-kicker {
+display: inline-block;
+background: var(–rust);
+color: var(–cream);
+font-size: 0.68rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+padding: 6px 14px;
+margin-bottom: 32px;
+border: 2px solid var(–cream);
+font-weight: 700;
+}
+
+.hero-h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(4rem, 10vw, 9rem);
+color: var(–cream);
+line-height: 0.92;
+letter-spacing: -0.04em;
+margin-bottom: 12px;
+}
+.hero-h1 em {
+font-style: italic;
+color: var(–sand);
+}
+
+.hero-sub {
+font-size: 0.85rem;
+color: var(–fog);
+letter-spacing: 0.12em;
+text-transform: uppercase;
+margin-top: 24px;
+margin-bottom: 48px;
+font-weight: 300;
+max-width: 480px;
+line-height: 1.8;
+}
+
+.hero-cta {
+display: inline-flex;
+gap: 0;
+}
+.btn-primary {
+background: var(–cream);
+color: var(–ink);
+border: var(–border-thick);
+border-color: var(–cream);
+padding: 16px 36px;
+font-family: ‘DM Mono’, monospace;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+cursor: pointer;
+text-decoration: none;
+transition: background 0.15s, color 0.15s;
+display: inline-block;
+}
+.btn-primary:hover { background: var(–rust); color: var(–cream); border-color: var(–rust); }
+
+.btn-ghost {
+background: transparent;
+color: var(–sand);
+border: 3px solid rgba(245,240,232,0.25);
+padding: 16px 36px;
+font-family: ‘DM Mono’, monospace;
+font-size: 0.75rem;
+font-weight: 400;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.15s;
+display: inline-block;
+}
+.btn-ghost:hover { border-color: var(–cream); color: var(–cream); }
+
+.hero-footer {
+padding: 24px 48px;
+border-top: 1px solid rgba(245,240,232,0.1);
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative; z-index: 10;
+}
+.hero-footer span {
+font-size: 0.68rem;
+color: var(–fog);
+letter-spacing: 0.2em;
+text-transform: uppercase;
+}
+
+.zero-badge {
+width: 80px; height: 80px;
+border: 3px solid rgba(245,240,232,0.3);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Playfair Display’, serif;
+font-size: 1.8rem;
+color: var(–sand);
+position: relative;
+animation: spin 20s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.zero-badge::after {
+content: ’ZERO · REDEFINED · ZERO · REDEFINED · ’;
+position: absolute;
+font-family: ‘DM Mono’, monospace;
+font-size: 0.45rem;
+letter-spacing: 0.15em;
+color: var(–fog);
+width: 100%; height: 100%;
+top: 0; left: 0;
+display: flex; align-items: center; justify-content: center;
+/* circular text via SVG would be ideal; text rings around */
+}
+
+/* ── ABOUT STRIP ───────────────────────── */
+.about-strip {
+background: var(–rust);
+border-bottom: var(–border-thick);
+padding: 0 48px;
+overflow: hidden;
+}
+.ticker {
+display: flex;
+gap: 0;
+white-space: nowrap;
+animation: ticker 20s linear infinite;
+padding: 18px 0;
+}
+.ticker span {
+font-size: 0.72rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–cream);
+padding-right: 60px;
+font-weight: 700;
+flex-shrink: 0;
+}
+.ticker span::after { content: ’ ◆ ’; color: rgba(245,240,232,0.5); }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+/* ── TWO-COL ABOUT ─────────────────────── */
+.about {
+display: grid;
+grid-template-columns: 1fr 1fr;
+border-bottom: var(–border-thick);
+}
+
+.about-left {
+padding: 80px 64px;
+border-right: var(–border-thick);
+background: var(–warm);
+position: relative;
+overflow: hidden;
+}
+.about-left::before {
+content: ‘0’;
+position: absolute;
+font-family: ‘Playfair Display’, serif;
+font-size: 28rem;
+color: rgba(26,21,16,0.04);
+top: -60px; right: -40px;
+line-height: 1;
+pointer-events: none;
+}
+
+.section-label {
+font-size: 0.65rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–bark);
+font-weight: 700;
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.section-label::before {
+content: ‘’;
+width: 32px; height: 2px;
+background: var(–bark);
+display: inline-block;
+}
+
+.about-left h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.2rem, 4vw, 3.8rem);
+line-height: 1.05;
+letter-spacing: -0.03em;
+margin-bottom: 28px;
+}
+.about-left h2 em {
+font-style: italic;
+color: var(–bark);
+}
+
+.about-left p {
+font-size: 0.82rem;
+line-height: 2;
+color: #5a4a38;
+font-weight: 300;
+max-width: 380px;
+margin-bottom: 16px;
+}
+
+.about-right {
+padding: 80px 64px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: var(–ink);
+color: var(–cream);
+}
+
+.stat-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0;
+}
+.stat-item {
+padding: 36px;
+border: 1px solid rgba(245,240,232,0.1);
+}
+.stat-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 3.5rem;
+line-height: 1;
+color: var(–sand);
+margin-bottom: 8px;
+}
+.stat-label {
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–fog);
+font-weight: 400;
+}
+
+.about-quote {
+border-left: 4px solid var(–rust);
+padding-left: 24px;
+font-family: ‘Instrument Serif’, serif;
+font-size: 1.2rem;
+font-style: italic;
+color: var(–sand);
+line-height: 1.6;
+}
+
+/* ── MENU SECTION ──────────────────────── */
+.menu-section {
+border-bottom: var(–border-thick);
+}
+
+.menu-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+padding: 56px 64px 40px;
+border-bottom: var(–border);
+}
+.menu-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(3rem, 6vw, 6rem);
+line-height: 0.9;
+letter-spacing: -0.04em;
+}
+.menu-header h2 em { font-style: italic; color: var(–bark); }
+.menu-note {
+font-size: 0.68rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–fog);
+text-align: right;
+max-width: 200px;
+line-height: 1.8;
+}
+
+.menu-tabs {
+display: flex;
+border-bottom: var(–border);
+overflow-x: auto;
+}
+.tab-btn {
+padding: 18px 32px;
+font-family: ‘DM Mono’, monospace;
+font-size: 0.68rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+border: none;
+border-right: var(–border);
+background: transparent;
+cursor: pointer;
+transition: background 0.15s, color 0.15s;
+color: var(–fog);
+white-space: nowrap;
+font-weight: 500;
+}
+.tab-btn:hover, .tab-btn.active {
+background: var(–ink);
+color: var(–cream);
+}
+
+.menu-grid {
+display: none;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 0;
+}
+.menu-grid.active { display: grid; }
+
+.menu-card {
+padding: 36px 40px;
+border-right: var(–border);
+border-bottom: var(–border);
+position: relative;
+transition: background 0.2s;
+background: var(–cream);
+}
+.menu-card:hover { background: var(–warm); }
+.menu-card:nth-child(3n) { border-right: none; }
+
+.card-price {
+position: absolute;
+top: 32px; right: 36px;
+font-family: ‘Playfair Display’, serif;
+font-size: 1.4rem;
+color: var(–bark);
+font-weight: 900;
+}
+.card-name {
+font-family: ‘Instrument Serif’, serif;
+font-size: 1.25rem;
+margin-bottom: 8px;
+line-height: 1.2;
+padding-right: 80px;
+}
+.card-desc {
+font-size: 0.72rem;
+color: #7a6a5a;
+line-height: 1.8;
+font-weight: 300;
+}
+.card-tag {
+display: inline-block;
+margin-top: 14px;
+font-size: 0.58rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+background: var(–moss);
+color: var(–cream);
+padding: 3px 10px;
+font-weight: 700;
+}
+
+/* ── EXPERIENCE ────────────────────────── */
+.experience {
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+border-bottom: var(–border-thick);
+min-height: 500px;
+}
+
+.exp-left {
+padding: 80px 64px;
+background: var(–moss);
+color: var(–cream);
+position: relative;
+overflow: hidden;
+}
+.exp-left::before {
+content: ‘’;
+position: absolute;
+width: 400px; height: 400px;
+border: 60px solid rgba(255,255,255,0.04);
+border-radius: 50%;
+bottom: -100px; left: -100px;
+}
+.exp-left .section-label { color: rgba(245,240,232,0.5); }
+.exp-left .section-label::before { background: rgba(245,240,232,0.5); }
+
+.exp-left h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 4vw, 3.5rem);
+line-height: 1.05;
+letter-spacing: -0.03em;
+margin-bottom: 32px;
+}
+.exp-left h2 em { font-style: italic; color: var(–sand); }
+
+.feature-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+.feature-list li {
+padding: 20px 0;
+border-top: 1px solid rgba(245,240,232,0.15);
+display: flex;
+align-items: flex-start;
+gap: 20px;
+font-size: 0.8rem;
+line-height: 1.7;
+color: rgba(245,240,232,0.8);
+font-weight: 300;
+}
+.feature-list li::before {
+content: attr(data-num);
+font-family: ‘Playfair Display’, serif;
+font-size: 1.8rem;
+color: rgba(245,240,232,0.25);
+line-height: 1;
+flex-shrink: 0;
+margin-top: -4px;
+}
+
+.exp-right {
+padding: 80px 64px;
+background: var(–cream);
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 0;
+}
+
+.hours-block {
+border: var(–border-thick);
+padding: 40px;
+margin-bottom: 0;
+background: var(–ink);
+color: var(–cream);
+}
+.hours-label {
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–fog);
+margin-bottom: 20px;
+font-weight: 700;
+}
+.hours-row {
+display: flex;
+justify-content: space-between;
+padding: 12px 0;
+border-bottom: 1px solid rgba(245,240,232,0.1);
+font-size: 0.78rem;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-day { color: var(–fog); }
+.hours-time { color: var(–sand); font-weight: 700; }
+
+.find-us {
+border: var(–border-thick);
+border-top: none;
+padding: 40px;
+background: var(–warm);
+}
+.find-us .hours-label { color: var(–bark); }
+.address {
+font-size: 0.82rem;
+line-height: 2;
+color: #5a4a38;
+font-weight: 300;
+}
+.address strong { color: var(–ink); font-weight: 700; }
+
+/* ── ADDONS ────────────────────────────── */
+.addons-section {
+border-bottom: var(–border-thick);
+display: grid;
+grid-template-columns: 1fr 2fr;
+}
+.addons-intro {
+padding: 72px 64px;
+border-right: var(–border-thick);
+background: var(–rust);
+color: var(–cream);
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.addons-intro h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 3.5vw, 3.5rem);
+line-height: 1;
+letter-spacing: -0.03em;
+margin-bottom: 20px;
+}
+.addons-intro p {
+font-size: 0.75rem;
+line-height: 1.9;
+color: rgba(245,240,232,0.75);
+font-weight: 300;
+}
+
+.addons-grid-wrap { padding: 48px 64px; }
+.addons-category { margin-bottom: 48px; }
+.addons-category:last-child { margin-bottom: 0; }
+.cat-title {
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–bark);
+font-weight: 700;
+margin-bottom: 16px;
+padding-bottom: 12px;
+border-bottom: 2px solid var(–sand);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.cat-price {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.1rem;
+color: var(–ink);
+}
+.addons-items {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+.addon-pill {
+border: 2px solid var(–ink);
+padding: 6px 16px;
+font-size: 0.72rem;
+font-weight: 500;
+letter-spacing: 0.05em;
+background: var(–cream);
+transition: background 0.15s, color 0.15s;
+cursor: default;
+}
+.addon-pill:hover { background: var(–ink); color: var(–cream); }
+
+/* ── EGGS / FOOD ────────────────────────── */
+.food-section {
+border-bottom: var(–border-thick);
+background: var(–warm);
+padding: 80px 64px;
+}
+.food-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 48px;
+padding-bottom: 32px;
+border-bottom: var(–border-thick);
+}
+.food-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(3rem, 5vw, 5.5rem);
+line-height: 0.9;
+letter-spacing: -0.04em;
+}
+.food-header h2 em { font-style: italic; color: var(–bark); }
+
+.food-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 0;
+border: var(–border-thick);
+}
+.food-card {
+padding: 32px 36px;
+border-right: var(–border);
+border-bottom: var(–border);
+position: relative;
+background: var(–cream);
+transition: background 0.2s;
+}
+.food-card:hover { background: var(–ink); color: var(–cream); }
+.food-card:hover .food-desc { color: var(–fog); }
+.food-card:hover .food-price { color: var(–sand); }
+.food-card:nth-child(3n) { border-right: none; }
+.food-name {
+font-family: ‘Instrument Serif’, serif;
+font-size: 1.15rem;
+margin-bottom: 8px;
+padding-right: 60px;
+line-height: 1.2;
+}
+.food-desc {
+font-size: 0.7rem;
+line-height: 1.8;
+color: #7a6a5a;
+font-weight: 300;
+margin-bottom: 12px;
+}
+.food-price {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.3rem;
+color: var(–bark);
+font-weight: 900;
+position: absolute;
+top: 28px; right: 32px;
+}
+
+/* ── SAUCES & CHEESE ────────────────────── */
+.condiments {
+border-bottom: var(–border-thick);
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+.condiment-block {
+padding: 64px;
+border-right: var(–border-thick);
+}
+.condiment-block:last-child { border-right: none; }
+.condiment-block h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 2.5rem;
+margin-bottom: 32px;
+letter-spacing: -0.03em;
+}
+.condiment-block h3 em { font-style: italic; color: var(–bark); }
+.item-list {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+.item-row {
+padding: 12px 0;
+border-bottom: 1px solid var(–sand);
+font-size: 0.78rem;
+font-weight: 400;
+display: flex;
+align-items: center;
+gap: 12px;
+color: #4a3a2a;
+}
+.item-row::before {
+content: ‘’;
+width: 6px; height: 6px;
+background: var(–bark);
+border-radius: 50%;
+flex-shrink: 0;
+}
+
+/* ── CTA FOOTER ────────────────────────── */
+.cta-footer {
+background: var(–ink);
+padding: 100px 64px;
+display: grid;
+grid-template-columns: 1.5fr 1fr;
+gap: 80px;
+align-items: center;
+border-bottom: var(–border-thick);
+}
+.cta-footer h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.5rem, 5vw, 5.5rem);
+line-height: 0.95;
+letter-spacing: -0.04em;
+color: var(–cream);
+}
+.cta-footer h2 em { font-style: italic; color: var(–sand); }
+
+.cta-actions {
+display: flex;
+flex-direction: column;
+gap: 16px;
+align-items: flex-start;
+}
+.cta-actions .btn-primary {
+width: 100%;
+text-align: center;
+}
+.cta-tagline {
+font-size: 0.68rem;
+color: var(–fog);
+letter-spacing: 0.15em;
+text-transform: uppercase;
+line-height: 2;
+font-weight: 300;
+}
+
+/* ── SITE FOOTER ───────────────────────── */
+.site-footer {
+background: var(–ink);
+border-top: var(–border-thick);
+padding: 32px 64px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.footer-logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.4rem;
+color: var(–cream);
+letter-spacing: -0.02em;
+}
+.footer-copy {
+font-size: 0.62rem;
+color: var(–fog);
+letter-spacing: 0.2em;
+text-transform: uppercase;
+}
+.footer-tagline {
+font-size: 0.68rem;
+color: var(–rust);
+letter-spacing: 0.2em;
+text-transform: uppercase;
+font-weight: 700;
+}
+
+/* ── SCROLL ANIMATIONS ─────────────────── */
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: none;
+}
+
+/* ── RESPONSIVE ────────────────────────── */
+@media (max-width: 900px) {
+.nav { padding: 20px 24px; }
+.hero-body { padding: 0 24px; }
+.hero-footer { padding: 20px 24px; }
+.about, .experience, .addons-section, .condiments { grid-template-columns: 1fr; }
+.about-left, .about-right { padding: 56px 32px; }
+.about-right { border-top: var(–border-thick); }
+.exp-right { padding: 48px 32px; }
+.exp-left { padding: 56px 32px; }
+.addons-intro { padding: 48px 32px; }
+.addons-intro h2 { font-size: 2.5rem; }
+.addons-grid-wrap { padding: 40px 32px; }
+.menu-header { padding: 40px 32px 28px; flex-direction: column; align-items: flex-start; gap: 12px; }
+.food-section { padding: 56px 32px; }
+.condiment-block { padding: 48px 32px; border-right: none; border-bottom: var(–border-thick); }
+.condiment-block:last-child { border-bottom: none; }
+.cta-footer { padding: 64px 32px; grid-template-columns: 1fr; gap: 40px; }
+.site-footer { padding: 24px 32px; flex-direction: column; gap: 16px; text-align: center; }
+.menu-card:nth-child(3n) { border-right: var(–border); }
+.food-card:nth-child(3n) { border-right: var(–border); }
+.experience { grid-template-columns: 1fr; }
+.condiments { border-bottom: var(–border-thick); }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+  <nav class="nav">
+    <div class="logo-text">
+      Shoonya
+      <span class="logo-devanagari">शून्य · Ek / 1 / One</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#food">Food</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#cta">Reserve</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-body">
+    <div class="hero-content">
+      <span class="hero-kicker">Specialty Coffee · Ahmedabad</span>
+      <h1 class="hero-h1">Zero,<br><em>Redef-<br>ined.</em></h1>
+      <p class="hero-sub">A space where espresso meets intention. Concrete walls, warm wood, rice paper light. Crafted brews from single origins to hand-pulled specials.</p>
+      <div class="hero-cta">
+        <a href="#menu" class="btn-primary">Explore Menu</a>
+        <a href="#visit" class="btn-ghost">Find Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <span>Est. Shoonya Cafe · शून्य</span>
+    <span>Espresso · Cold Brew · Manual Brews · Sandos · Florentines</span>
+    <div class="zero-badge">0</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+
+<div class="about-strip">
+  <div class="ticker">
+    <span>SPECIALTY COFFEE</span>
+    <span>COLD BREW</span>
+    <span>MANUAL BREWS</span>
+    <span>MATCHA · HOJICHA</span>
+    <span>SANDOS & BURGERS</span>
+    <span>FLORENTINES</span>
+    <span>SINGLE ORIGIN</span>
+    <span>BARREL AGED</span>
+    <span>ZERO REDEFINED</span>
+    <!-- duplicate for seamless loop -->
+    <span>SPECIALTY COFFEE</span>
+    <span>COLD BREW</span>
+    <span>MANUAL BREWS</span>
+    <span>MATCHA · HOJICHA</span>
+    <span>SANDOS & BURGERS</span>
+    <span>FLORENTINES</span>
+    <span>SINGLE ORIGIN</span>
+    <span>BARREL AGED</span>
+    <span>ZERO REDEFINED</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+
+<section class="about reveal">
+  <div class="about-left">
+    <div class="section-label">Our Philosophy</div>
+    <h2>Where <em>nothing</em><br>becomes<br>everything.</h2>
+    <p>Shoonya (शून्य) means zero. Not absence, but potential. The blank canvas before the pour, the silence before the bloom, the breath before the first sip.</p>
+    <p>We built this space around one obsession: coffee done with care. Rough concrete, living wood, rice paper light. Every detail considered, nothing wasted.</p>
+  </div>
+
+  <div class="about-right">
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Drinks on Menu</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Menu Pages</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Ways to<br>Customise</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Perfect<br>First Cup</div>
+      </div>
+    </div>
+    <blockquote class="about-quote">
+      "Trial week's beautiful mess" is our Shoonya Style. Always evolving, always honest.
+    </blockquote>
+  </div>
+</section>
+
+<!-- MENU -->
+
+<section class="menu-section reveal" id="menu">
+  <div class="menu-header">
+    <h2>The <em>Menu</em></h2>
+    <div class="menu-note">All prices in ₹ · Add-ons available · Ask about decaf & alt milks</div>
+  </div>
+
+  <div class="menu-tabs">
+    <button class="tab-btn active" onclick="showTab('hot')">Hot · गरम</button>
+    <button class="tab-btn" onclick="showTab('iced')">Iced · ठंडा</button>
+    <button class="tab-btn" onclick="showTab('coldbrew')">Cold Brew · ठंडा काढ़ा</button>
+    <button class="tab-btn" onclick="showTab('wellness')">Wellness · चाय / रस</button>
+  </div>
+
+  <!-- HOT -->
+
+  <div class="menu-grid active" id="tab-hot">
+    <div class="menu-card">
+      <div class="card-price">₹150/190</div>
+      <div class="card-name">Espresso / Doppio</div>
+      <div class="card-desc">Concentrated shot</div>
+      <span class="card-tag">Classic</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹230</div>
+      <div class="card-name">Bean Macchiato</div>
+      <div class="card-desc">Espresso topped with vanilla foam</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹230</div>
+      <div class="card-name">Cortado Crème</div>
+      <div class="card-desc">Cortado with milk foam</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Cappuccino</div>
+      <div class="card-desc">Ask for Honeycino too</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Flat White</div>
+      <div class="card-desc">Espresso with velvet texture milk</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Americano Your Way</div>
+      <div class="card-desc">Feel free to customise proportions your way</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Jaggery Cinnamon Latte</div>
+      <div class="card-desc">Espresso with steamed gud milk & spices</div>
+      <span class="card-tag">House Special</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">SHOONYA STYLE</div>
+      <div class="card-desc">Trial week's beautiful mess</div>
+      <span class="card-tag">★ Signature</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Sea Salt Dark Mocha</div>
+      <div class="card-desc">Robusta & Callebaut chocolate love</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Brown Butter Latte</div>
+      <div class="card-desc">Version of bullet coffee</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹350</div>
+      <div class="card-name">Vietnamese Coffee</div>
+      <div class="card-desc">Bold espresso layered over sweet condensed milk</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹370</div>
+      <div class="card-name">Pistachio Flat White</div>
+      <div class="card-desc">Espresso and steamed milk with a fragrant pistachio finish</div>
+      <span class="card-tag">New</span>
+    </div>
+  </div>
+
+  <!-- ICED -->
+
+  <div class="menu-grid" id="tab-iced">
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Exactly That Latte!</div>
+      <div class="card-desc">Version of iced latte, mildly sweetened with vanilla</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Valencia Americano</div>
+      <div class="card-desc">Orange bitters infused with a hint of cinnamon</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Black Lemonade</div>
+      <div class="card-desc">Dark espresso meets the tangy snap of lemonade</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹290</div>
+      <div class="card-name">Unsweetened Iced Latte</div>
+      <div class="card-desc">Espresso and chilled milk over ice</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹310</div>
+      <div class="card-name">Cold Coffee</div>
+      <div class="card-desc">We make it without ice cream</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹310</div>
+      <div class="card-name">Palm Island</div>
+      <div class="card-desc">Espresso foam over coconut water</div>
+      <span class="card-tag">Unique</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Yuzu Long Black</div>
+      <div class="card-desc">Espresso with refreshing yuzu citrus notes</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Spanish Latte</div>
+      <div class="card-desc">Espresso with chilled milk and sweet condensed milk</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Aerocano</div>
+      <div class="card-desc">Diet Coke fan club meets espresso</div>
+      <span class="card-tag">Wild</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹350</div>
+      <div class="card-name">Salted Caramel</div>
+      <div class="card-desc">Espresso and chilled milk with salted caramel</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹350</div>
+      <div class="card-name">Iced Mocha</div>
+      <div class="card-desc">Bold espresso meets rich chocolate over ice</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹350</div>
+      <div class="card-name">Ginger Ale Brew</div>
+      <div class="card-desc">Espresso with equal parts of tonic & ginger ale</div>
+    </div>
+  </div>
+
+  <!-- COLD BREW -->
+
+  <div class="menu-grid" id="tab-coldbrew">
+    <div class="menu-card">
+      <div class="card-price">₹310</div>
+      <div class="card-name">Absolute Shoonya</div>
+      <div class="card-desc">Bold & classic</div>
+      <span class="card-tag">★ Signature</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Coconut Crème</div>
+      <div class="card-desc">Float with coconut foam</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Cranbrew</div>
+      <div class="card-desc">Cranberry with cold brew</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Fruity Notes</div>
+      <div class="card-desc">Citrus brew</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Barrel Aged</div>
+      <div class="card-desc">Single origin oak aged</div>
+      <span class="card-tag">Premium</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Wild Honey & Berries</div>
+      <div class="card-desc">Melody of berries & honey</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Cherry Cherry</div>
+      <div class="card-desc">Cherry notes with CB & T</div>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹350</div>
+      <div class="card-name">Burnt CB & T</div>
+      <div class="card-desc">Cold brew & tonic</div>
+    </div>
+  </div>
+
+  <!-- WELLNESS -->
+
+  <div class="menu-grid" id="tab-wellness">
+    <div class="menu-card">
+      <div class="card-price">₹270</div>
+      <div class="card-name">Loose Leaf Tea</div>
+      <div class="card-desc">Hibiscus · Blue Pea · Chamomile</div>
+      <span class="card-tag">Wellness</span>
+    </div>
+    <div class="menu-card">
+      <div class="card-price">₹330</div>
+      <div class="card-name">Fresh Juice</div>
+      <div class="card-desc">ABC · Yuzu Lemonade · Cucumber Mint</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD -->
+
+<section class="food-section reveal" id="food">
+  <div class="food-header">
+    <h2>Kitchen &<br><em>Eggs</em></h2>
+    <div class="section-label" style="margin-bottom:0;">All day breakfast</div>
+  </div>
+  <div class="food-grid">
+    <div class="food-card">
+      <div class="food-price">₹390</div>
+      <div class="food-name">"The Bear" Omelette</div>
+      <div class="food-desc">French style omelette, chives, chips, house cheese sauce</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹390</div>
+      <div class="food-name">Classic</div>
+      <div class="food-desc">Boiled / Fried eggs [3pc] · Omelette: cheese / cheese masala / scrambled</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹410</div>
+      <div class="food-name">Tadka Eggs</div>
+      <div class="food-desc">Fluffy open omelette, coconut chutney, sautéed Indian spiced veggies</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹450</div>
+      <div class="food-name">Japnese Egg Sando</div>
+      <div class="food-desc">Sando bread, Japanese mayonnaise, boiled eggs, chives, sage butter</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹470</div>
+      <div class="food-name">Mexican Skillet</div>
+      <div class="food-desc">Bean sauce, hash brown chunks, poached eggs, guacamole, chili oil</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹470</div>
+      <div class="food-name">Eggs Benny</div>
+      <div class="food-desc">Brioche bread, pesto, guacamole, poached eggs, hollandaise, chili oil</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹470</div>
+      <div class="food-name">Akuri Bhurji</div>
+      <div class="food-desc">Masala Egg Bhurji our way</div>
+    </div>
+    <div class="food-card">
+      <div class="food-price">₹470</div>
+      <div class="food-name">Turkish Eggs</div>
+      <div class="food-desc">Herb yoghurt, poached eggs, crispy onion, crispy garlic, chilli oil</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAUCES & CHEESE -->
+
+<section class="condiments reveal">
+  <div class="condiment-block">
+    <h3>House <em>Sauces</em></h3>
+    <div class="item-list">
+      <div class="item-row">White Truffle Mayonnaise</div>
+      <div class="item-row">Whipped Feta</div>
+      <div class="item-row">Japnese Mayonnaise</div>
+      <div class="item-row">Strawberry Gochujang</div>
+      <div class="item-row">Herb Ranch</div>
+      <div class="item-row">Chimichurri</div>
+      <div class="item-row">Chipotle Cashew Cream</div>
+      <div class="item-row">Lemon Garlic Aioli</div>
+      <div class="item-row">Smash Burger Sauce</div>
+      <div class="item-row">Pesto</div>
+    </div>
+  </div>
+  <div class="condiment-block">
+    <h3>Our <em>Cheeses</em></h3>
+    <div class="item-list">
+      <div class="item-row">Mozzarella / Bocconcini</div>
+      <div class="item-row">Parmesan</div>
+      <div class="item-row">Riccotta</div>
+      <div class="item-row">Processed Cheese</div>
+      <div class="item-row">Feta</div>
+      <div class="item-row">Scamorza</div>
+      <div class="item-row">Baby Burrata</div>
+      <div class="item-row">Cheddar</div>
+    </div>
+  </div>
+</section>
+
+<!-- ADDONS -->
+
+<section class="addons-section reveal">
+  <div class="addons-intro">
+    <div class="section-label" style="color:rgba(245,240,232,0.5);">Make It Yours</div>
+    <h2>Common<br>Add-ons</h2>
+    <p>Every drink, exactly how you want it. Swap the milk, roast, or heat. Add an extra shot. We don't judge. We calibrate.</p>
+  </div>
+  <div class="addons-grid-wrap">
+    <div class="addons-category">
+      <div class="cat-title">
+        Alternative Milks
+        <span class="cat-price">₹100</span>
+      </div>
+      <div class="addons-items">
+        <div class="addon-pill">Oat Milk</div>
+        <div class="addon-pill">Almond Milk</div>
+        <div class="addon-pill">Decaf</div>
+      </div>
+    </div>
+    <div class="addons-category">
+      <div class="cat-title">
+        Roast Profiles
+        <span class="cat-price">₹60</span>
+      </div>
+      <div class="addons-items">
+        <div class="addon-pill">Medium Roast</div>
+        <div class="addon-pill">Dark Roast</div>
+      </div>
+    </div>
+    <div class="addons-category">
+      <div class="cat-title">
+        Syrups & Flavours
+        <span class="cat-price">₹60</span>
+      </div>
+      <div class="addons-items">
+        <div class="addon-pill">Vanilla</div>
+        <div class="addon-pill">Caramel</div>
+        <div class="addon-pill">Hazelnut</div>
+        <div class="addon-pill">Cinnamon</div>
+        <div class="addon-pill">Pistachio</div>
+      </div>
+    </div>
+    <div class="addons-category">
+      <div class="cat-title">
+        Extra Hot Options
+        <span class="cat-price">₹75 / ₹150</span>
+      </div>
+      <div class="addons-items">
+        <div class="addon-pill">Half Espresso</div>
+        <div class="addon-pill">Extra Espresso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE / VISIT -->
+
+<section class="experience reveal" id="visit">
+  <div class="exp-left">
+    <div class="section-label">The Space</div>
+    <h2>A <em>third place</em><br>worth<br>returning to.</h2>
+    <ul class="feature-list">
+      <li data-num="01">Double-height concrete walls, mezzanine seating above, wood and rice paper warmth throughout.</li>
+      <li data-num="02">Professional-grade Sanremo espresso setup with obsessively dialled-in single origins.</li>
+      <li data-num="03">Cold brew on tap. From Absolute Shoonya to Barrel Aged oak-aged reserves.</li>
+      <li data-num="04">Manual brews, matcha, hojicha, and cold brew alongside an all-day kitchen menu.</li>
+    </ul>
+  </div>
+
+  <div class="exp-right">
+    <div class="hours-block">
+      <div class="hours-label">Opening Hours</div>
+      <div class="hours-row">
+        <span class="hours-day">Every day</span>
+        <span class="hours-time">10:00 AM to 10:00 PM</span>
+      </div>
+    </div>
+    <div class="find-us">
+      <div class="hours-label">Find Us</div>
+      <div class="address">
+        <strong>Shoonya · शून्य</strong><br>
+        9, Aanal Tower, Roop Nagar<br>
+        Commerce Six Road, Navrangpura<br>
+        Ahmedabad, Gujarat<br><br>
+        <strong>+91 78628 27658</strong><br>
+        Around Rs. 1800 for two people
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta-footer reveal" id="cta">
+  <h2>Come in.<br><em>Stay a while.</em><br>Zero excuses.</h2>
+  <div class="cta-actions">
+    <p class="cta-tagline">Specialty coffee · All-day kitchen<br>Manual brews · Cold brew on tap<br>Matcha · Hojicha · Fresh juice</p>
+    <a href="#menu" class="btn-primary">Browse Full Menu →</a>
+    <a href="#visit" class="btn-ghost">Get Directions →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+  <div class="footer-logo">Shoonya · शून्य</div>
+  <div class="footer-copy">© 2026 Shoonya Cafe · All Rights Reserved</div>
+  <div class="footer-tagline">Zero, Redefined.</div>
+</footer>
+
+<script>
+  // Tab switching
+  function showTab(id) {
+    document.querySelectorAll('.menu-grid').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
