@@ -28,17 +28,17 @@ html { scroll-behavior: smooth; }
 body {
 background: var(--cream);
 color: var(--ink);
-font-family: ‘DM Mono’, monospace;
+font-family: 'DM Mono', monospace;
 overflow-x: hidden;
 cursor: crosshair;
 }
 
 /* NOISE TEXTURE OVERLAY */
 body::before {
-content: ‘’;
+content: '';
 position: fixed;
 inset: 0;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 pointer-events: none;
 z-index: 9999;
 opacity: 0.4;
@@ -57,7 +57,7 @@ overflow: hidden;
 
 /* organic blob bg */
 .hero::before {
-content: ‘’;
+content: '';
 position: absolute;
 width: 700px; height: 700px;
 background: radial-gradient(ellipse, rgba(124,92,58,0.35) 0%, transparent 70%);
@@ -66,7 +66,7 @@ border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
 animation: blob 12s ease-in-out infinite alternate;
 }
 .hero::after {
-content: ‘’;
+content: '';
 position: absolute;
 width: 500px; height: 500px;
 background: radial-gradient(ellipse, rgba(74,92,58,0.25) 0%, transparent 70%);
@@ -92,7 +92,7 @@ z-index: 10;
 }
 
 .logo-text {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.6rem;
 color: var(--cream);
 letter-spacing: -0.02em;
@@ -102,7 +102,7 @@ line-height: 1;
 font-size: 0.9rem;
 color: var(--sand);
 display: block;
-font-family: ‘DM Mono’, monospace;
+font-family: 'DM Mono', monospace;
 font-weight: 300;
 letter-spacing: 0.1em;
 margin-top: 2px;
@@ -146,7 +146,7 @@ font-weight: 700;
 }
 
 .hero-h1 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(4rem, 10vw, 9rem);
 color: var(--cream);
 line-height: 0.92;
@@ -180,7 +180,7 @@ color: var(--ink);
 border: var(--border-thick);
 border-color: var(--cream);
 padding: 16px 36px;
-font-family: ‘DM Mono’, monospace;
+font-family: 'DM Mono', monospace;
 font-size: 0.75rem;
 font-weight: 700;
 letter-spacing: 0.2em;
@@ -197,7 +197,7 @@ background: transparent;
 color: var(--sand);
 border: 3px solid rgba(245,240,232,0.25);
 padding: 16px 36px;
-font-family: ‘DM Mono’, monospace;
+font-family: 'DM Mono', monospace;
 font-size: 0.75rem;
 font-weight: 400;
 letter-spacing: 0.2em;
@@ -229,7 +229,7 @@ width: 80px; height: 80px;
 border: 3px solid rgba(245,240,232,0.3);
 border-radius: 50%;
 display: flex; align-items: center; justify-content: center;
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.8rem;
 color: var(--sand);
 position: relative;
@@ -237,9 +237,9 @@ animation: spin 20s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 .zero-badge::after {
-content: ’ZERO · REDEFINED · ZERO · REDEFINED · ’;
+content: 'ZERO · REDEFINED · ZERO · REDEFINED · ';
 position: absolute;
-font-family: ‘DM Mono’, monospace;
+font-family: 'DM Mono', monospace;
 font-size: 0.45rem;
 letter-spacing: 0.15em;
 color: var(--fog);
@@ -272,7 +272,7 @@ padding-right: 60px;
 font-weight: 700;
 flex-shrink: 0;
 }
-.ticker span::after { content: ’ ◆ ’; color: rgba(245,240,232,0.5); }
+.ticker span::after { content: ' ◆ '; color: rgba(245,240,232,0.5); }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
 /* ── TWO-COL ABOUT ─────────────────────── */
@@ -290,9 +290,9 @@ position: relative;
 overflow: hidden;
 }
 .about-left::before {
-content: ‘0’;
+content: '0';
 position: absolute;
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 28rem;
 color: rgba(26,21,16,0.04);
 top: -60px; right: -40px;
@@ -312,14 +312,14 @@ align-items: center;
 gap: 12px;
 }
 .section-label::before {
-content: ‘’;
+content: '';
 width: 32px; height: 2px;
 background: var(--bark);
 display: inline-block;
 }
 
 .about-left h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(2.2rem, 4vw, 3.8rem);
 line-height: 1.05;
 letter-spacing: -0.03em;
@@ -358,7 +358,7 @@ padding: 36px;
 border: 1px solid rgba(245,240,232,0.1);
 }
 .stat-num {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 3.5rem;
 line-height: 1;
 color: var(--sand);
@@ -375,7 +375,7 @@ font-weight: 400;
 .about-quote {
 border-left: 4px solid var(--rust);
 padding-left: 24px;
-font-family: ‘Instrument Serif’, serif;
+font-family: 'Instrument Serif', serif;
 font-size: 1.2rem;
 font-style: italic;
 color: var(--sand);
@@ -395,7 +395,7 @@ padding: 56px 64px 40px;
 border-bottom: var(--border);
 }
 .menu-header h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(3rem, 6vw, 6rem);
 line-height: 0.9;
 letter-spacing: -0.04em;
@@ -418,7 +418,7 @@ overflow-x: auto;
 }
 .tab-btn {
 padding: 18px 32px;
-font-family: ‘DM Mono’, monospace;
+font-family: 'DM Mono', monospace;
 font-size: 0.68rem;
 letter-spacing: 0.2em;
 text-transform: uppercase;
@@ -457,13 +457,13 @@ background: var(--cream);
 .card-price {
 position: absolute;
 top: 32px; right: 36px;
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.4rem;
 color: var(--bark);
 font-weight: 900;
 }
 .card-name {
-font-family: ‘Instrument Serif’, serif;
+font-family: 'Instrument Serif', serif;
 font-size: 1.25rem;
 margin-bottom: 8px;
 line-height: 1.2;
@@ -503,7 +503,7 @@ position: relative;
 overflow: hidden;
 }
 .exp-left::before {
-content: ‘’;
+content: '';
 position: absolute;
 width: 400px; height: 400px;
 border: 60px solid rgba(255,255,255,0.04);
@@ -514,7 +514,7 @@ bottom: -100px; left: -100px;
 .exp-left .section-label::before { background: rgba(245,240,232,0.5); }
 
 .exp-left h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(2rem, 4vw, 3.5rem);
 line-height: 1.05;
 letter-spacing: -0.03em;
@@ -541,7 +541,7 @@ font-weight: 300;
 }
 .feature-list li::before {
 content: attr(data-num);
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.8rem;
 color: rgba(245,240,232,0.25);
 line-height: 1;
@@ -615,7 +615,7 @@ flex-direction: column;
 justify-content: center;
 }
 .addons-intro h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(2rem, 3.5vw, 3.5rem);
 line-height: 1;
 letter-spacing: -0.03em;
@@ -645,7 +645,7 @@ justify-content: space-between;
 align-items: center;
 }
 .cat-price {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.1rem;
 color: var(--ink);
 }
@@ -681,7 +681,7 @@ padding-bottom: 32px;
 border-bottom: var(--border-thick);
 }
 .food-header h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(3rem, 5vw, 5.5rem);
 line-height: 0.9;
 letter-spacing: -0.04em;
@@ -707,7 +707,7 @@ transition: background 0.2s;
 .food-card:hover .food-price { color: var(--sand); }
 .food-card:nth-child(3n) { border-right: none; }
 .food-name {
-font-family: ‘Instrument Serif’, serif;
+font-family: 'Instrument Serif', serif;
 font-size: 1.15rem;
 margin-bottom: 8px;
 padding-right: 60px;
@@ -721,7 +721,7 @@ font-weight: 300;
 margin-bottom: 12px;
 }
 .food-price {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.3rem;
 color: var(--bark);
 font-weight: 900;
@@ -741,7 +741,7 @@ border-right: var(--border-thick);
 }
 .condiment-block:last-child { border-right: none; }
 .condiment-block h3 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 2.5rem;
 margin-bottom: 32px;
 letter-spacing: -0.03em;
@@ -763,7 +763,7 @@ gap: 12px;
 color: #4a3a2a;
 }
 .item-row::before {
-content: ‘’;
+content: '';
 width: 6px; height: 6px;
 background: var(--bark);
 border-radius: 50%;
@@ -781,7 +781,7 @@ align-items: center;
 border-bottom: var(--border-thick);
 }
 .cta-footer h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: clamp(2.5rem, 5vw, 5.5rem);
 line-height: 0.95;
 letter-spacing: -0.04em;
@@ -818,7 +818,7 @@ justify-content: space-between;
 align-items: center;
 }
 .footer-logo {
-font-family: ‘Playfair Display’, serif;
+font-family: 'Playfair Display', serif;
 font-size: 1.4rem;
 color: var(--cream);
 letter-spacing: -0.02em;
@@ -896,7 +896,7 @@ transform: none;
   <div class="hero-body">
     <div class="hero-content">
       <span class="hero-kicker">Specialty Coffee · Ahmedabad</span>
-      <h1 class="hero-h1">Zero,<br><em>Redef-<br>ined.</em></h1>
+      <h1 class="hero-h1">Zero,<br><em>Redefined.</em></h1>
       <p class="hero-sub">A space where espresso meets intention. Concrete walls, warm wood, rice paper light. Crafted brews from single origins to hand-pulled specials.</p>
       <div class="hero-cta">
         <a href="#menu" class="btn-primary">Explore Menu</a>
