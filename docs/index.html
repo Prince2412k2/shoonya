@@ -1154,8 +1154,14 @@ function renderAddons(cats) {
 
 async function loadMenu() {
   try {
-    const { v } = await fetch(`${R2}/${SLUG}/latest.json`, { cache: 'no-cache' }).then(r => r.json());
-    const data = await fetch(`${R2}/${SLUG}/menu.v${v}.json`).then(r => r.json());
+    const latest = await fetch(`${R2}/${SLUG}/latest.json`, { cache: 'no-cache' }).then(r => r.json());
+    if (latest.disabled) {
+      const tabs = document.getElementById('bev-tabs'); if (tabs) tabs.innerHTML = '';
+      const grids = document.getElementById('bev-grids');
+      if (grids) grids.innerHTML = '<div style="text-align:center;padding:60px 20px;opacity:.7">This menu is currently unavailable.</div>';
+      return;
+    }
+    const data = await fetch(`${R2}/${SLUG}/menu.v${latest.v}.json`).then(r => r.json());
     const cats = (data.categories || []).filter(c => c.items && c.items.length);
     renderBeverages(cats.filter(c => c.layout === 'beverage_tab'));
     renderFood(cats.filter(c => c.layout === 'food_grid'));
